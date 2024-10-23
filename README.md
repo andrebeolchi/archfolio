@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+This project was created to be a portfolio of architecture and urbanism projects.
 
-First, run the development server:
+**Table of Contents**
+
+- [Portfolio](#portfolio)
+  - [Features](#features)
+  - [How to run the project?](#how-to-run-the-project)
+  - [Folder structure](#folder-structure)
+  - [ADR (Architectural Decision Record)](#adr-architectural-decision-record)
+    - [Why Next.js?](#why-nextjs)
+    - [Why Code Standardization?](#why-code-standardization)
+    - [Why Git Standardization?](#why-git-standardization)
+    - [Why Imports Standardization?](#why-imports-standardization)
+    - [Why shadcn/ui?](#why-shadcnui)
+
+## Features
+
+- [ ] Home with projects
+  - [ ] Hero
+  - [ ] Academic Formation
+  - [ ] Projects
+  - [ ] Footer
+- [ ] Login screen
+- [ ] Admin screen
+  - [ ] CRUD of projects
+  - [ ] CRUD of categories
+  - [ ] CRUD of academic formations
+
+## How to run the project?
+
+1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:andrebeolchi/portfolio-cari.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install the dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Run the project
 
-## Learn More
+```bash
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Folder structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The default folder structure of a Next.js project includes the following directories:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/app`: Contains the custom `App` component of the application
+  - I will use the App Routing structure to create routes
+  - `src/components`: Contains the reusable components of the application
+  - `src/lib`: Contains utility functions and business logic
 
-## Deploy on Vercel
+## ADR (Architectural Decision Record)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### [Why Next.js?](./docs/ADR001-nextjs.md)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### [Why Code Standardization?](./docs/ADR002-code-standardization.md)
+
+### [Why Git Standardization?](./docs/ADR003-git-standardization.md)
+
+### [Why Imports Standardization?](./docs/ADR004-imports-standardization.md)
+
+### [Why shadcn/ui?](./docs/ADR005-shadcn.md)
