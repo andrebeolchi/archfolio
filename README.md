@@ -1,10 +1,10 @@
-# Portfolio
+# EZFolio
 
-This project was created to be a portfolio of architecture and urbanism projects.
+This project is a portfolio for anyone who wants to show their projects and academic formation.
 
 **Table of Contents**
 
-- [Portfolio](#portfolio)
+- [EZFolio](#ezfolio)
   - [Features](#features)
   - [How to run the project?](#how-to-run-the-project)
   - [Folder structure](#folder-structure)
@@ -33,7 +33,7 @@ This project was created to be a portfolio of architecture and urbanism projects
 1. Clone the repository
 
 ```bash
-git clone git@github.com:andrebeolchi/portfolio-cari.git
+git clone git@github.com:andrebeolchi/ezfolio.git
 ```
 
 2. Install the dependencies
