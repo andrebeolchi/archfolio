@@ -1,4 +1,3 @@
-'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import * as React from 'react'
@@ -12,109 +11,24 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
-
-import { ScrollArea } from './ui/scroll-area'
-
-const components: {
-  title: string
-  imageUrl: string
-  href: string
-  description: string
-}[] = [
-  {
-    title: 'Alert Dialog',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/alert-dialog',
-    description: 'A modal dialog that interrupts the user with important content and expects a response.',
-  },
-  {
-    title: 'Hover Card',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/hover-card',
-    description: 'For sighted users to preview content available behind a link.',
-  },
-  {
-    title: 'Progress',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/progress',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-  },
-  {
-    title: 'Scroll-area',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/scroll-area',
-    description: 'Visually or semantically separates content.',
-  },
-  {
-    title: 'Tabs',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tabs',
-    description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-  {
-    title: 'Tabs',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tabs',
-    description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-  {
-    title: 'Tabs',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tabs',
-    description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-  {
-    title: 'Tabs',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tabs',
-    description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    imageUrl: 'https://picsum.photos/200/300',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-]
+import { getProjects } from '@/modules/projects'
 
 export function Navigator() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="#" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>Formação</NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
-        <AcademicNavigationItem />
+        <ProjectsNavigationItem />
 
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="#" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>Contato</NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -123,19 +37,21 @@ export function Navigator() {
   )
 }
 
-const AcademicNavigationItem = () => {
+const ProjectsNavigationItem = async () => {
+  const projects = await getProjects()
+
   return (
     <NavigationMenuItem>
       <NavigationMenuTrigger>Projetos</NavigationMenuTrigger>
       <NavigationMenuContent>
         <ScrollArea className="h-80">
           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-            {components.map((component, index) => (
+            {projects?.map((component, index) => (
               <ListItem
                 key={`${component.title}-${index}`}
                 title={component.title}
-                href={component.href}
-                imageUrl={component.imageUrl}
+                href={`#${component?.id}`}
+                imageUrl={component.images[0].url}
               >
                 {component.description}
               </ListItem>
@@ -174,9 +90,9 @@ const ListItem = React.forwardRef<
               className="h-8 w-8 flex-none text-muted-foreground object-contain"
             />
           </div>
-          <div className="block">
+          <div className="block space-y-1">
             <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+            <p className="line-clamp-2 text-xs leading-tight text-muted-foreground">{children}</p>
           </div>
         </a>
       </NavigationMenuLink>
