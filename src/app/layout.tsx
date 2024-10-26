@@ -31,8 +31,10 @@ export default async function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex min-h-screen flex-col overflow-x-hidden">{children}</div>
-          <Toaster />
+          <div className="flex min-h-screen flex-col overflow-x-hidden">
+            {children}
+            <Toaster />
+          </div>
         </ThemeProvider>
       </body>
     </html>
