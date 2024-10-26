@@ -1,6 +1,7 @@
 import '@/app/globals.css'
 
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 import localFont from 'next/font/local'
 
 import { ThemeProvider } from '@/components/theme-provider'
@@ -33,6 +34,7 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="flex min-h-screen flex-col overflow-x-hidden">
             {children}
+            <Analytics />
             <Toaster />
           </div>
         </ThemeProvider>
