@@ -1,6 +1,7 @@
 import { AppSidebar } from '@/components/app-sidebar'
 import { DownloadCurriculumButton, LogoutButton } from '@/components/curriculum-button'
 import { getUser } from '@/components/get-user'
+import { ModeToggle } from '@/components/theme-mode-toggle'
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 
 export default async function GeneralLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -11,10 +12,13 @@ export default async function GeneralLayout({ children }: Readonly<{ children: R
       <AppSidebar />
       <div className="w-full space-y-6 flex flex-col flex-1">
         <div className="w-full flex flex-col">
-          <div className="container p-6 max-w-screen-xl flex items-center gap-6 justify-between">
+          <div className="container p-6 max-w-screen-xl flex items-center justify-between gap-6">
             <SidebarTrigger />
 
-            {user ? <LogoutButton /> : <DownloadCurriculumButton />}
+            <div className="flex gap-2 items-center">
+              <ModeToggle />
+              {user ? <LogoutButton /> : <DownloadCurriculumButton />}
+            </div>
           </div>
           {/* Sidebar */}
         </div>
