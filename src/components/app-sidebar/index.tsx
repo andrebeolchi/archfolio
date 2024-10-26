@@ -12,16 +12,44 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { getAcademics } from '@/modules/academics'
 import { getProjects } from '@/modules/projects'
 
 export const AppSidebar = () => {
   return (
     <Sidebar variant="floating" side="left" collapsible="offcanvas">
       <SidebarMenu>
+        <AcademicNavigationSub />
         <ProjectsNavigationSub />
       </SidebarMenu>
       <SidebarRail />
     </Sidebar>
+  )
+}
+
+const AcademicNavigationSub = async () => {
+  const academics = await getAcademics()
+
+  return (
+    <Collapsible className="group/collapsible">
+      <SidebarGroup>
+        <SidebarGroupLabel asChild>
+          <CollapsibleTrigger>
+            Formação
+            <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+          </CollapsibleTrigger>
+        </SidebarGroupLabel>
+        <CollapsibleContent>
+          <SidebarMenuSub>
+            {academics?.map(academic => (
+              <SubLinkItem key={academic.id} href={`#${academic.id}`}>
+                {academic.title}
+              </SubLinkItem>
+            ))}
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </SidebarGroup>
+    </Collapsible>
   )
 }
 
