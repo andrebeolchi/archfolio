@@ -1,7 +1,8 @@
 import '@/app/globals.css'
 
 import type { Metadata } from 'next'
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 
 import { ThemeProvider } from '@/components/theme-provider'
@@ -35,6 +36,7 @@ export default async function RootLayout({
           <div className="flex min-h-screen flex-col overflow-x-hidden">
             {children}
             <Analytics />
+            <SpeedInsights />
             <Toaster />
           </div>
         </ThemeProvider>
