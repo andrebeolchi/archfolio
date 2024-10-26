@@ -3,19 +3,10 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { getHero } from '@/modules/hero'
 
 export const HeroSection = async () => {
-  const details = {
-    title: 'John Doe',
-    subtitle:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  }
-
-  const footer = {
-    social: {
-      whatsapp: 'https://wa.me/5547999999999',
-    },
-  }
+  const data = await getHero()
 
   return (
     <div className="px-6 pt-14 lg:px-8">
@@ -36,13 +27,13 @@ export const HeroSection = async () => {
 
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 flex flex-col items-center gap-10">
         <div className="flex flex-col gap-2">
-          <h1 className="text-4xl font-bold tracking-tight leading-4 sm:text-6xl text-center">{details?.title}</h1>
-          <p className="text-lg leading-normal text-center text-muted-foreground">{details?.subtitle}</p>
+          <h1 className="text-4xl font-bold tracking-tight leading-4 sm:text-6xl text-center">{data?.title}</h1>
+          <p className="text-lg leading-normal text-center text-muted-foreground">{data?.subtitle}</p>
         </div>
 
         <div className="flex gap-2">
           <Button asChild className="bg-lime-600 dark:bg-lime-400 font-semibold">
-            <a href={footer?.social?.whatsapp}>Contato</a>
+            <a href={data?.whatsapp}>Contato</a>
           </Button>
           <Button asChild variant="ghost">
             <Link href="#projects">Ver mais</Link>

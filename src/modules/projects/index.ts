@@ -2,23 +2,13 @@ import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 import { ElementType } from 'react'
 
 import { db } from '@/interfaces/firebase'
-
-export interface ImagesProps {
-  url: string
-  title: string
-  order: number
-  id: string
-}
+import { ImagesProps, InputImage } from '@/modules'
 
 export interface BulletProps {
   icon: ElementType
   title: string
   description: string
 }
-
-export type InputImage = File & Partial<ImagesProps>
-
-export type InputFile = Omit<InputImage, 'order'>
 
 export interface ProjectsItemProps {
   id: string

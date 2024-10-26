@@ -1,16 +1,7 @@
 import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 
 import { db } from '@/interfaces/firebase'
-
-export interface ImagesProps {
-  url: string
-  title: string
-  order: number
-  id: string
-}
-export type InputImage = File & Partial<ImagesProps>
-
-export type InputFile = Omit<InputImage, 'order'>
+import { InputImage } from '@/modules'
 
 export interface AcademicDetailsProps {
   title: string
