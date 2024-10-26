@@ -1,7 +1,17 @@
+import { HeroSection } from './hero'
+
 export default async function Home() {
   return (
     <main>
-      <h1 className="text-xl mb-4">Super secure home page</h1>
+      <HeroSection />
+
+      <div>
+        <h1 className="text-xl mb-4">Academics</h1>
+      </div>
+
+      <div>
+        <h1 className="text-xl mb-4">Projects</h1>
+      </div>
     </main>
   )
 }

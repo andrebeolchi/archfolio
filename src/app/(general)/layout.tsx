@@ -12,7 +12,7 @@ export default async function GeneralLayout({ children }: Readonly<{ children: R
       <AppSidebar />
       <div className="w-full space-y-6 flex flex-col flex-1">
         <div className="w-full flex flex-col">
-          <div className="container p-6 max-w-screen-xl flex items-center justify-between gap-6">
+          <div className="container p-6 max-w-screen-xl flex items-center justify-between gap-6 z-10">
             <SidebarTrigger />
 
             <div className="flex gap-2 items-center">
