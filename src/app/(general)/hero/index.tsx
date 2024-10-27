@@ -27,7 +27,7 @@ export const HeroSection = async () => {
 
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 flex flex-col items-center gap-10">
         <div className="flex flex-col gap-2">
-          <h1 className="text-4xl font-bold tracking-tight leading-4 sm:text-6xl text-center">{data?.title}</h1>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-center">{data?.title}</h1>
           <p className="text-lg leading-normal text-center text-muted-foreground">{data?.subtitle}</p>
         </div>
 
