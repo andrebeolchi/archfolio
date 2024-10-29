@@ -9,7 +9,7 @@ export const HeroSection = async () => {
   const data = await getHero()
 
   return (
-    <div className="px-6 pt-14 lg:px-8">
+    <div className="h-dvh px-6 pt-14 lg:px-8">
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
@@ -27,8 +27,8 @@ export const HeroSection = async () => {
 
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 flex flex-col items-center gap-10">
         <div className="flex flex-col gap-2">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-center">{data?.title}</h1>
-          <p className="text-lg leading-normal text-center text-muted-foreground">{data?.subtitle}</p>
+          <h1 className="text-4xl sm:text-6xl  font-bold tracking-tight text-center">{data?.title}</h1>
+          <p className="text-md sm:text-lg leading-normal text-center text-muted-foreground">{data?.subtitle}</p>
         </div>
 
         <div className="flex gap-2">
