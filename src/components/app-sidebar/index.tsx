@@ -7,13 +7,12 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
 } from '@/components/ui/sidebar'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { getAcademicDetails, getAcademicList } from '@/modules/academics'
 import { getProjectDetails, getProjectList } from '@/modules/projects'
+
+import { SubLinkItem } from './client'
 
 export const AppSidebar = () => {
   return (
@@ -70,7 +69,7 @@ const ProjectsNavigationSub = async () => {
         <CollapsibleContent>
           <SidebarMenuSub>
             {projects?.map(project => (
-              <SubLinkItem key={project.id} href={`#${project.id}`}>
+              <SubLinkItem key={project.id} href={`/projects/${project.id}`}>
                 {project.title}
               </SubLinkItem>
             ))}
@@ -80,22 +79,3 @@ const ProjectsNavigationSub = async () => {
     </Collapsible>
   )
 }
-
-const SubLinkItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <TooltipProvider delayDuration={200}>
-    <Tooltip>
-      <TooltipTrigger>
-        <SidebarMenuSubItem>
-          <SidebarMenuSubButton asChild>
-            <a href={href}>
-              <span>{children}</span>
-            </a>
-          </SidebarMenuSubButton>
-        </SidebarMenuSubItem>
-      </TooltipTrigger>
-      <TooltipContent side="left">
-        <span>{children}</span>
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
-)
