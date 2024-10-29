@@ -1,7 +1,7 @@
 'use client'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
@@ -11,11 +11,11 @@ import { Label } from '@/components/ui/label'
 import { firebase } from '@/interfaces/firebase'
 
 export default function Login() {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const router = useRouter()
 
-  async function handleSubmit(event: React.FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     try {
       event.preventDefault()
       event.stopPropagation()
