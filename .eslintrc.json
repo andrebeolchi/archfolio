@@ -7,6 +7,7 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "@next/next/no-img-element": "off",
     "semi": ["error", "never"],
     "no-unused-vars": [
       "error",

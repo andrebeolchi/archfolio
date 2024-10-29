@@ -1,4 +1,4 @@
-import { collection, getDocs, orderBy, query } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/firestore'
 
 import { db } from '@/interfaces/firebase'
 import { InputImage } from '@/modules'
@@ -23,7 +23,7 @@ export interface AcademicProps extends AcademicDetailsProps {
   items: AcademicItemProps[]
 }
 
-export const getAcademics = async (): Promise<AcademicItemProps[] | void> => {
+export const getAcademicList = async (): Promise<AcademicItemProps[] | void> => {
   const ref = collection(db, 'data', 'academic-education', 'list')
 
   const ordered = query(ref, orderBy('order', 'asc'))
@@ -31,4 +31,12 @@ export const getAcademics = async (): Promise<AcademicItemProps[] | void> => {
   const data = await getDocs(ordered)
 
   return data.docs.map(doc => doc.data() as AcademicItemProps)
+}
+
+export const getAcademicDetails = async (): Promise<AcademicDetailsProps | void> => {
+  const detailsRef = doc(db, 'data', 'academic-education')
+
+  const docSnap = await getDoc(detailsRef)
+
+  return docSnap.data() as AcademicDetailsProps
 }
