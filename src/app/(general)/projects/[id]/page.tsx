@@ -2,6 +2,7 @@ import Gallery from '@/components/gallery'
 import { Badge } from '@/components/ui/badge'
 import { getProject } from '@/modules/projects'
 
+//@ts-expect-error TODO: Fix types
 export default async function Project({ params }) {
   const project = await getProject(params?.id)
 
