@@ -12,8 +12,8 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { getAcademicList } from '@/modules/academics'
-import { getProjects } from '@/modules/projects'
+import { getAcademicDetails, getAcademicList } from '@/modules/academics'
+import { getProjectDetails, getProjectList } from '@/modules/projects'
 
 export const AppSidebar = () => {
   return (
@@ -29,13 +29,14 @@ export const AppSidebar = () => {
 
 const AcademicNavigationSub = async () => {
   const academics = await getAcademicList()
+  const academicDetails = await getAcademicDetails()
 
   return (
-    <Collapsible className="group/collapsible">
+    <Collapsible defaultOpen className="group/collapsible">
       <SidebarGroup>
         <SidebarGroupLabel asChild>
           <CollapsibleTrigger>
-            Formação
+            {academicDetails?.title}
             <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
           </CollapsibleTrigger>
         </SidebarGroupLabel>
@@ -54,14 +55,15 @@ const AcademicNavigationSub = async () => {
 }
 
 const ProjectsNavigationSub = async () => {
-  const projects = await getProjects()
+  const projects = await getProjectList()
+  const projectsDetails = await getProjectDetails()
 
   return (
     <Collapsible defaultOpen className="group/collapsible">
       <SidebarGroup>
         <SidebarGroupLabel asChild>
           <CollapsibleTrigger>
-            Projetos ({projects?.length})
+            {projectsDetails?.title} ({projects?.length})
             <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
           </CollapsibleTrigger>
         </SidebarGroupLabel>
