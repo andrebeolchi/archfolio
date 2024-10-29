@@ -44,3 +44,11 @@ export const getProjectDetails = async (): Promise<ProjectsDetailsProps | void> 
 
   return docSnap.data() as ProjectsDetailsProps
 }
+
+export const getProject = async (id: string): Promise<ProjectsItemProps> => {
+  const detailsRef = doc(db, 'data', 'projects', 'list', id)
+
+  const docSnap = await getDoc(detailsRef)
+
+  return docSnap.data() as ProjectsItemProps
+}
