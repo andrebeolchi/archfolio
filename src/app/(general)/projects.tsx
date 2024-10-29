@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Separator } from '@/components/ui/separator'
 import { getProjectDetails, getProjectList } from '@/modules/projects'
 
@@ -16,15 +18,14 @@ export const ProjectsSection = async () => {
 
       <div className="columns-2 md:columns-3 lg:columns-4 space-y-4 gap-4">
         {items?.map(item => (
-          <article
-            key={item.id}
-            className="relative flex flex-col bg-card p-2 border border-border shadow-sm rounded-xl overflow-hidden cursor-pointer break-inside-avoid"
-          >
-            <img src={item.images[0]?.url} alt={item.title} className="rounded-lg object-contain" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100 flex items-end">
-              <h3 className="text-white text-lg font-semibold p-4">{item.title}</h3>
-            </div>
-          </article>
+          <Link href={`/projects/${item.id}`} key={item.id}>
+            <article className="relative flex flex-col bg-card p-2 border border-border shadow-sm rounded-xl overflow-hidden cursor-pointer break-inside-avoid">
+              <img src={item.images[0]?.url} alt={item.title} className="rounded-lg object-contain" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100 flex items-end">
+                <h3 className="text-white text-lg font-semibold p-4">{item.title}</h3>
+              </div>
+            </article>
+          </Link>
         ))}
       </div>
     </div>
