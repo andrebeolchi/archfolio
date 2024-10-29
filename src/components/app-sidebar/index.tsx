@@ -12,7 +12,7 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { getAcademics } from '@/modules/academics'
+import { getAcademicList } from '@/modules/academics'
 import { getProjects } from '@/modules/projects'
 
 export const AppSidebar = () => {
@@ -28,7 +28,7 @@ export const AppSidebar = () => {
 }
 
 const AcademicNavigationSub = async () => {
-  const academics = await getAcademics()
+  const academics = await getAcademicList()
 
   return (
     <Collapsible className="group/collapsible">
