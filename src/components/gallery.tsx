@@ -2,9 +2,16 @@
 import Image from 'next/image'
 import { useEffect, useState, useMemo } from 'react'
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselApi,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 import { cn } from '@/lib/utils'
 
-import { Carousel, CarouselContent, CarouselItem, CarouselApi, CarouselNext, CarouselPrevious } from './ui/carousel'
 
 interface GalleryProps {
   images: {
