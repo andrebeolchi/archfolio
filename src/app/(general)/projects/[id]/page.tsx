@@ -2,9 +2,8 @@ import Gallery from '@/components/gallery'
 import { Badge } from '@/components/ui/badge'
 import { getProject } from '@/modules/projects'
 
-export default async function Project({ params }: { params: { id: string } }) {
-  const { id } = await params
-  const project = await getProject(id)
+export default async function Project({ params }) {
+  const project = await getProject(params?.id)
 
   return (
     <main className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
