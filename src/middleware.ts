@@ -3,7 +3,9 @@ import { authMiddleware, redirectToHome, redirectToLogin } from 'next-firebase-a
 
 import { clientConfig, serverConfig } from '@/interfaces/firebase/config'
 
-const PUBLIC_PATHS = ['/login', '/']
+const PROJECT_PATH = new RegExp('^/projects/([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12})$')
+
+const PUBLIC_PATHS = ['/login', '/', PROJECT_PATH]
 
 const AUTH_PATHS = ['/login']
 
