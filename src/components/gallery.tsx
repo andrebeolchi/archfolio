@@ -43,8 +43,8 @@ const Gallery = ({ images }: GalleryProps) => {
   const mainImage = useMemo(
     () =>
       images.map((image, index) => (
-        <CarouselItem key={index} className="relative aspect-square w-full">
-          <div className="border border-border rounded-lg bg-background shadow-sm p-2 group">
+        <CarouselItem key={index}>
+          <div className="relative border border-border rounded-lg bg-background shadow-sm p-2 group">
             <img src={image?.url} alt={image?.title} className="w-full h-[32rem] object-contain" />
             <div
               className="absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-300 hover:opacity-100 flex items-center justify-center cursor-pointer"
@@ -63,11 +63,14 @@ const Gallery = ({ images }: GalleryProps) => {
       images.map((image, index) => (
         <CarouselItem
           key={index}
-          className="relative aspect-square w-full basis-1/4"
+          className="relative aspect-square basis-1/2 sm:basis-1/3 md:basis-1/4"
           onClick={() => handleClick(index)}
         >
           <Image
-            className={cn(['p-2 rounded-lg', index === current && 'border-muted border-2'])}
+            className={cn([
+              'p-2 rounded-lg cursor-pointer transition-all duration-300 hover:opacity-75 object-cover border-2 border-muted',
+              index === current && 'bg-muted',
+            ])}
             src={image.url}
             fill
             alt={`Carousel Thumbnail Imagem ${index + 1}`}
@@ -127,14 +130,16 @@ const Gallery = ({ images }: GalleryProps) => {
 
   return (
     <div>
-      <Carousel setApi={setMainApi}>
-        <CarouselContent>{mainImage}</CarouselContent>
-        <CarouselNext />
-        <CarouselPrevious />
-      </Carousel>
-      <Carousel setApi={setThumbnailApi}>
-        <CarouselContent>{thumbnailImages}</CarouselContent>
-      </Carousel>
+      <div className="flex flex-col gap-2">
+        <Carousel setApi={setMainApi}>
+          <CarouselContent>{mainImage}</CarouselContent>
+          <CarouselNext />
+          <CarouselPrevious />
+        </Carousel>
+        <Carousel setApi={setThumbnailApi}>
+          <CarouselContent className="ml-0 gap-2">{thumbnailImages}</CarouselContent>
+        </Carousel>
+      </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-full w-dvw h-dvh">
