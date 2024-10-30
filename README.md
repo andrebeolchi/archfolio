@@ -17,16 +17,25 @@ This project is a portfolio for anyone who wants to show their projects and acad
 
 ## Features
 
-- [ ] Home with projects
-  - [ ] Hero
-  - [ ] Academic Formation
-  - [ ] Projects
+- [x] Home with projects
+  - [x] Hero
+  - [x] Academic Formation
+  - [x] Projects
   - [ ] Footer
-- [ ] Login screen
+- [x] Project screen
+  - [x] Carousel of images
+  - [x] Description
+  - [x] Full screen image
+- [x] Login screen
 - [ ] Admin screen
+
+  - [ ] CRUD of hero
   - [ ] CRUD of projects
-  - [ ] CRUD of categories
   - [ ] CRUD of academic formations
+  - [ ] CRUD of footer
+
+- Extra features
+  - [ ] CRUD of categories
 
 ## How to run the project?
 
